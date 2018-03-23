@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            font-size: 20px;
+            line-height: 100px;
+            color:#fff;
+            text-align: center;
+            margin-top: 10px;
+        }
+        *{
+            list-style: none;
+        }
+        input{
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<a href="jquery2%20shaixuan.html">筛选</a>
+<div id="aa">
+    <div class="haha">
+        <div></div>
+    </div>
+</div>
+<div class="one">hello</div>
+<div class="one"></div>
+<div></div>
+<div></div>
+<p class="p1"></p>
+<p class="p2"></p>
+<ul>
+    <li style="display: none;">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<input type="text" class="pu">
+<input type="text" class="pu">
+<input type="text" autofocus class="in">
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    //基本
+    console.log($("#aa"));//通过#id,得到第一个div如何去获取一个元素
+    console.log($("div"));//标签名 element 得到的是所有的div
+    console.log($(".one"));//.class 类名 得到的是类名为one的两个div
+    console.log($("*"));//* 找到每一个元素
+    console.log($("div,p"));//群组选择器 所有的div和p
+    //层级
+    console.log($("#aa div"));//选中两个 返回的是id名为aa下的两个div 在给定的祖先元素下匹配所有的后代元素
+    console.log($("#aa>div"));//只选中一个  第一个，返回的是第一个div
+    console.log($("div+p"));//一个p   匹配所有跟在 div后面的 p 元素，只返回一个p
+    console.log($("div~p"));//两个p  匹配div 元素之后的所有 p 元素，返回所有的p
+    //基本筛选器
+    console.log($("div:first"));//集合里的第一个div 获取第一个元素，这个例子里就是id名为aa的div
+    console.log($("div:not(#aa)"));//去除所有与给定选择器匹配的元素,返回的是除了id名为aa的以外的所有div
+    $("ul>li:even").css("background","pink");//匹配所有索引值为偶数的元素，从 0 开始计数  所有的偶数元素变为粉色背景  奇数偶数的判断是通过索引值。
+    $("ul>li:odd").css("background","skyblue");//匹配所有索引值为奇数的元素，从 0 开始计数  所有的奇数元素变为天蓝色背景
+    $("div:eq(5)").css("border","2px solid black");//索引为5的div加了黑色边框  匹配一个给定索引值的元素
+    $("ul>li:gt(5)").css("border","1px solid #f60");//匹配所有大于给定索引值的元素,给ul中所有的 li索引值大于5的li加边框。
+    $("ul>li:lt(5)").css("border","1px solid #000");////匹配所有小于给定索引值的元素,给ul中所有的 li索引值小于5的li加边框。
+    $("ul>li:last").css("background","#f60");//获取最后一个元素
+    console.log($(":header"));//匹配如 h1, h2, h3之类的标题元素,所以就会返回 h1, h2, h3
+    // $(":focus").css("background","#f60");//最后一个表单背景颜色改变，但是我的电脑上显示结果出不来
+    console.log($(":root"));//选择该文档的根元素。返回值是HTML
+    console.log($("div:contains(hello)"));//匹配包含给定文本的元素 ，返回值是第一个类名是one的div
+    console.log($(":empty"));//匹配所有不包含子元素或者文本的空元素
+    console.log($("div:has(.haha)"));//找寻父元素 找的是以haha为类名的div的父元素div，所以返回的是#aa的div
+    console.log($(".one:parent"));//匹配含有子元素或者文本的元素
+    console.log($("li:hidden"));//匹配所有不可见元素，或者type为hidden的元素 给第一个li设置了display：hidden。
+    console.log($("li:visible"));//匹配所有的可见元素
+    console.log($("div[class]"));//匹配包含class的元素，有类名的元素
+    console.log($("input[class='pu']").attr("checked", true));//查找所有class属性是pu的input元素
+    console.log($("input[class!='pu']").attr("checked", true))//查找所有class属性不是pu的input元素
+</script>
+</body>
+</html>

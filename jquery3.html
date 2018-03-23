@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<div class="demo">div</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    //第一个 HTML 实现每一个div里头的内容后面加一个本身索引值加1的值
+    $(".demo").html(function (index,oldVal) {
+        return oldVal+(index+1);
+    });
+    //第二个 CSS 实现每一个div的背景颜色变为skyblue，同时每增加一个索引值，div的宽就增加100px
+    $(".demo").css("background","skyblue");
+    $(".demo").css("width",function (index,oldVal) {
+        return (index+1)*100;
+    });
+    //第三个  addClass增加类名 实现每一个div后面都加一个类名
+    $(".demo").addClass(function (index,oldVal) {
+        return "test"+(index+1);
+    });
+    //第四个 removeClass移除类名  把刚刚增加的类名移除
+    $(".demo").removeClass(function (index,oldVal) {
+        return "test"+(index+1);
+    });
+</script>
+</body>
+</html>

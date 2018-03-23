@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            list-style: none;
+        }
+        .a1{
+            width: 200px;
+            height: 200px;
+            background-color: #00C0A5;
+        }
+    </style>
+</head>
+<body>
+<a href="jquery3.html">第三个例子</a>
+<ul>
+    <span>121</span>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4
+        <ul></ul>
+    </li>
+    <li>5</li>
+    <li>6</li>
+    <li class="one">7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <span>hou1</span>
+</ul>
+<a href=""></a>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div>
+    <div class="b box">
+        <div class="item">
+        </div>
+    </div>
+</div>
+<div class="a1">
+    <div class="a2">
+        <div class="a3"></div>
+    </div>
+</div>
+<p>Hello</p><div><span>Hello Again</span></div><p>And Again</p>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    //过滤
+    $("ul>li").css("border","1px solid pink");//先给所有的li都设置样式
+    $("ul>li:eq(2)").css("border","2px dashed red");//获取当前链式操作中第N个jQuery对象，返回jQuery对象
+    $("ul>li:first").css("background","blue");//获取第一个元素
+    $("ul>li:last").css("background","skyblue");//获取最后一个元素
+    $("ul>li").filter(".one").css("background","blue");//筛选出与指定表达式匹配的元素集合。
+    console.log($("li").is(function(index,ele){
+        if(ele.innerHTML==="6")
+        {
+            return true;
+        }
+    }));//返回值true  根据选择器、DOM元素或 jQuery 对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true。
+    console.log($("ul>li").map(function(index,ele){
+        return ele.innerHTML;
+    }));//将一组元素转换成其他数组（不论是否是元素数组） 就将所有的li转换成了数组
+    console.log($('li').has('ul').css("background","pink"));//会把第一组ul里的4的背景色变成粉色，因为我给这个li里加入了ul  has保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+    console.log($("ul>li").not($(".one")));//输出剩余的19个li  从匹配元素的集合中删除与指定表达式匹配的元素
+    console.log($("ul>li").slice(15));//选取一个匹配的子集 与原来的slice方法类似  就是截取了15个以后的，所以返回的是剩下的li
+    //查找
+    console.log($("div").children(""));//取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。所以返回值是span
+    console.log($(".item").closest(".box"));//从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素 返回值是box这个div
+    console.log($("ul").find("span"));//这个函数是找出正在处理的元素的后代元素的好方法 返回值是两个span
+    console.log($("ul").next());//找到每个ul的后面紧邻的同辈元素。返回值一个是a、一个是div
+    console.log($("li:first").nextAll().addClass("after"));//查找当前元素之后所有的同辈元素。
+    console.log($("p").next());//查找当前元素之后所有的同辈元素，直到遇到匹配的那个元素为止。返回值是div、script。
+    console.log($("li").parent());//取得一个包含着所有匹配元素的唯一父元素的元素集合  返回值是ul
+    console.log($("li").parents());//取得一个包含着所有匹配元素的祖先元素的元素集合（不包含根元素），返回值是ul, ul, body, html
+    console.log($(".a3").parentsUntil(".a1").css("width","200px"));//查找当前元素的所有的父辈元素，直到遇到匹配的那个元素为止 返回值是a2
+    console.log($("ul").prev());//取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合，返回值是a
+    console.log($("div:last").prevAll().addClass("before"));//查找当前元素之前所有的同辈元素 返回值就是它之前的同辈元素
+    console.log($("li").prevUntil("one").css("background", "blue"));//查找当前元素之前所有的同辈元素，直到遇到匹配的那个元素为止。
+    console.log($("li").siblings());//取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
+    console.log($("ul").add("span"));//添加一个新元素到一组匹配的元素中，并且这个新元素能匹配给定的表达式
+    console.log($("li:first").nextAll().addBack().css("background", "pink"));//添加堆栈中元素集合到当前集合，一个选择性的过滤选择器
+    console.log($("ul").contents());//查找匹配元素内部所有的子节点（包括文本节点）。
+    console.log($("p").find("span").end());//回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
+</script>
+</body>
+</html>
